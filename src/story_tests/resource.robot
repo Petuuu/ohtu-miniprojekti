@@ -18,6 +18,3 @@ Open And Configure Browser
     END
     New Context
     New Page  about:blank
-
-Reset Todos
-    Go To  ${RESET_URL}
