@@ -1,20 +1,24 @@
+# cache
 .pytest_cache/
 __pycache__/
 
+# virtual environments and environment variables
 .venv/
 .env
 secret.env
-possu.sh
 
+# database
 *.db
 *.log
 instance/
 
+# coverage
 .coverage
 htmlcov/
 output.xml
 report.html
 log.html
 
+# robot tests
 browser/
 playwright-log.txt
