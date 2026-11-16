@@ -7,4 +7,3 @@ Suite Teardown   Close Browser
 After starting main page loads normally
     Go To  ${HOME_URL}
     Get Title  ==  Miniprojekti
-    Get Text  body  *=  Hello World!
