@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
 
-from .reference import Reference
-
+from src.models.reference import Reference
 
 @dataclass
 class Article(Reference):
