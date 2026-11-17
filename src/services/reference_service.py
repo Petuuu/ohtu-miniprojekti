@@ -15,3 +15,6 @@ class ReferenceService:
 
     def validate(self):
         pass
+
+
+references_service = ReferenceRepository()
