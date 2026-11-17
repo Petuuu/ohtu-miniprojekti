@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
+from models.reference import Reference
 
-from src.models.reference import Reference
 
 @dataclass
 class Article(Reference):
@@ -29,9 +29,18 @@ class Article(Reference):
             self.month,
             self.note,
         ]
-        self._dict = {"author": self.author, "title": self.title, "journal" : self.journal, "year": self.year,
-                       "volume":self.volume, "number" : self.number, "pages": self.pages, "month" : self.month,
-                        "note": self.note}
+        self._dict = {
+            "author": self.author,
+            "title": self.title,
+            "journal": self.journal,
+            "year": self.year,
+            "volume": self.volume,
+            "number": self.number,
+            "pages": self.pages,
+            "month": self.month,
+            "note": self.note,
+        }
+
     def __iter__(self):
         return iter(self._list)
 

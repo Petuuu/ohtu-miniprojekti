@@ -1,5 +1,5 @@
-from src.models.article import Article
-from src.repositories.reference_repository import ReferenceRepository
+from models.article import Article
+from repositories.reference_repository import ReferenceRepository
 
 
 class ReferenceService:

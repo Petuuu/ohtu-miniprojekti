@@ -1,4 +1,5 @@
-from src.models.reference import Reference
+from models.reference import Reference
+
 
 class ReferenceRepository:
     def __init__(self):
