@@ -13,6 +13,7 @@ def index():
 
 @app.route("/add_article", methods=["POST"])
 def add_reference():
+    key = request.form.get("key")
     author = request.form.get("author")
     title = request.form.get("title")
     journal = request.form.get("journal")
@@ -30,6 +31,6 @@ def add_reference():
     zblnumber = request.form.get("zblnumber")
     eprint = request.form.get("eprint")
 
-    reference_service.create_reference(author, title, journal, year, volume, number, pages, month, note)
+    reference_service.create_reference(key, author, title, journal, year, volume, number, pages, month, note)
 
     return redirect("/")
