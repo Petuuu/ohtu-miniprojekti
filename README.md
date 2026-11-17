@@ -1,8 +1,8 @@
 # ohtu-miniprojekti
 
-- product backlog: https://github.com/users/Petuuu/projects/1
-- sprint backlog: https://github.com/users/Petuuu/projects/2
-
+- [Pelisäännöt](pelisaannot.md)
+- [Backlog](https://github.com/users/Petuuu/projects/3)
+- [OKD-klusteri](https://route-ohjelmistotuotanto-lahiopetus-2026-23.ext.okd-cs-test-0.k8s.cs.helsinki.fi/)
 
 ### definition of done:
 - Repo on ajan tasalla

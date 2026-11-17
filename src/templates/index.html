@@ -1,11 +1,87 @@
-<!DOCTYPE html>
-<html lang="en"></html>
-<head>
-  <meta charset="UTF-8">
-  <title>Miniprojekti</title>
-</head>
-<body>
-  <h2>Hello World!</h2>
-  </form>
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %} Miniprojekti {% endblock %}
+{% block body %}
+
+<h2>Viiteet:</h2>
+<ul>
+
+    {% for reference in references %}
+    <h3>{{reference.title}}</h3>
+        {% for attribute, value in reference._dict.items() %}
+            {% if value %}
+            <li>
+                {{attribute}}: {{value}}
+            </li>
+            {% endif %}
+
+        {% endfor %}
+        <hr>
+
+    {% endfor%}
+</ul>
+
+<h2>Lisää artikkeli</h2>
+
+<form action="/add_article" method="post">
+    <label for="key">Avain*</label>
+    <input type="text" id="key" name="key" required>
+    <br />
+
+    <label for="author">Tekijä*</label>
+    <input type="text" id="author" name="author" required>
+    <br />
+
+    <label for="title">Teos*</label>
+    <input type="text" id="title" name="title" required>
+    <br />
+
+    <label for="journal">Julkaisussa*</label>
+    <input type="text" id="journal" name="journal" required>
+    <br />
+
+    <label for="year">Vuosi*</label>
+    <input type="text" id="year" name="year" required>
+    <br />
+
+    <label for="volume">Vuosikerta</label>
+    <input type="text" id="volume" name="volume">
+    <br />
+
+    <label for="number">Nro.</label>
+    <input type="text" id="number" name="number">
+    <br />
+
+    <label for="pages">Sivut</label>
+    <input type="text" id="pages" name="pages">
+    <br />
+
+    <label for="month">Kuukausi</label>
+    <input type="text" id="month" name="month">
+    <br />
+
+    <label for="note">Lisätietoja</label>
+    <textarea id="note" name="note"
+        rows="5" cols="33"></textarea>
+    <br />
+
+    <label for="doi">DOI</label>
+    <input type="text" id="doi" name="doi">
+    <br />
+
+    <label for="issn">ISSN</label>
+    <input type="text" id="issn" name="issn">
+    <br />
+
+    <label for="zblnumber">ZBL&ndash;numero</label>
+    <input type="text" id="zblnumber" name="zblnumber">
+    <br />
+
+    <label for="eprint">E-print&ndash;tiedot</label>
+    <input type="text" id="eprint" name="eprint">
+    <br />
+
+    <input type="submit" id="submit" name="submit" value="Add" />
+</form>
+
+{% endblock %}
