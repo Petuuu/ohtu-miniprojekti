@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request
-from models import Article
+from src.models import Article
 app = Flask(__name__)
 
 @app.route("/")
