@@ -20,7 +20,7 @@ def add_reference():
 
     volume = request.form.get("volume")
     number = request.form.get("number")
-    pages = request.form.get("page_a", ""), request.form.get("page_b", "")
+    pages = request.form.get("pages")
 
     month = request.form.get("month")
     note = request.form.get("note")
@@ -30,6 +30,21 @@ def add_reference():
     zblnumber = request.form.get("zblnumber")
     eprint = request.form.get("eprint")
 
-    reference_service.create_reference(key, author, title, journal, year, volume, number, pages, month, note, doi, issn, zblnumber, eprint)
+    reference_service.create_reference(
+        key,
+        author,
+        title,
+        journal,
+        year,
+        volume,
+        number,
+        pages,
+        month,
+        note,
+        doi,
+        issn,
+        zblnumber,
+        eprint,
+    )
 
     return redirect("/")
