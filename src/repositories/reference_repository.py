@@ -7,3 +7,6 @@ class ReferenceRepository:
 
     def create_reference(self, reference: Reference):
         self._list.append(reference)
+
+    def get_references(self):
+        return self._list
