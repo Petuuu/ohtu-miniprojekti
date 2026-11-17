@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, request
-from models.article import Article
 from services.reference_service import reference_service
 
 app = Flask(__name__)
@@ -31,6 +30,6 @@ def add_reference():
     zblnumber = request.form.get("zblnumber")
     eprint = request.form.get("eprint")
 
-    reference_service.create_reference(key, author, title, journal, year, volume, number, pages, month, note)
+    reference_service.create_reference(key, author, title, journal, year, volume, number, pages, month, note, doi, issn, zblnumber, eprint)
 
     return redirect("/")

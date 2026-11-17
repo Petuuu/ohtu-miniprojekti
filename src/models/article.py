@@ -1,12 +1,10 @@
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import dataclass, field
 from models.reference import Reference
 
 
 @dataclass
 class Article(Reference):
     """Data Class for an article."""
-
     author: str | None = None
     title: str | None = None
     journal: str | None = None
@@ -16,6 +14,10 @@ class Article(Reference):
     pages: str | None = None
     month: str | None = None
     note: str | None = None
+    doi: str | None = None
+    issn: str | None = None
+    zblnumber: str | None = None
+    eprint: str | None = None
 
     def __post_init__(self):
         self._list = [
@@ -28,6 +30,10 @@ class Article(Reference):
             self.pages,
             self.month,
             self.note,
+            self.doi,
+            self.issn,
+            self.zblnumber,
+            self.eprint,
         ]
         self._dict = {
             "author": self.author,
@@ -39,6 +45,10 @@ class Article(Reference):
             "pages": self.pages,
             "month": self.month,
             "note": self.note,
+            "doi": self.doi,
+            "issn": self.issn,
+            "zblnumber": self.zblnumber,
+            "eprint": self.eprint,
         }
 
     def __iter__(self):
