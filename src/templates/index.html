@@ -3,6 +3,24 @@
 {% block title %} Miniprojekti {% endblock %}
 {% block body %}
 
+<h2>Viiteet:</h2>
+<ul>
+
+    {% for reference in references %}
+    <h3>{{reference[1]}}</h3>
+        {% for elem in reference %}
+            {% if elem %}
+            <li>
+                {{elem}}
+            </li>
+            {% endif %}
+
+        {% endfor %}
+        <hr>
+
+    {% endfor%}
+</ul>
+
 <h2>Lisää artikkeli</h2>
 
 <form action="/add_article" method="post">
