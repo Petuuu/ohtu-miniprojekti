@@ -14,7 +14,9 @@ class ReferenceService:
         return self._repository.get_references()
 
     def validate(self, *args):
-        pass
+        for arg in args:
+            if len(arg) >= 150:
+                raise ValueError
 
 
 reference_service = ReferenceService(ReferenceRepository())
