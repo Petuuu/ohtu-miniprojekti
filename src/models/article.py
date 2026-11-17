@@ -17,7 +17,6 @@ class Article(Reference):
     pages: str | None = None
     month: str | None = None
     note: str | None = None
-    _list: list[str | int | None] = field(init=False, repr=False)
 
     def __post_init__(self):
         self._list = [
@@ -31,7 +30,9 @@ class Article(Reference):
             self.month,
             self.note,
         ]
-
+        self._dict = {"author": self.author, "title": self.title, "journal" : self.journal, "year": self.year,
+                       "volume":self.volume, "number" : self.number, "pages": self.pages, "month" : self.month,
+                        "note": self.note}
     def __iter__(self):
         return iter(self._list)
 

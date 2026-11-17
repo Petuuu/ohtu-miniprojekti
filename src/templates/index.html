@@ -7,11 +7,11 @@
 <ul>
 
     {% for reference in references %}
-    <h3>{{reference[1]}}</h3>
-        {% for elem in reference %}
-            {% if elem %}
+    <h3>{{reference.title}}</h3>
+        {% for attribute, value in reference._dict.items() %}
+            {% if value %}
             <li>
-                {{elem}}
+                {{attribute}}: {{value}}
             </li>
             {% endif %}
 
