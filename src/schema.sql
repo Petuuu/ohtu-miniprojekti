@@ -1,6 +1,6 @@
 CREATE TABLE ReferencesTable (
   key TEXT PRIMARY KEY NOT NULL UNIQUE,
-  entry_type TEXT NOT NULL,
+  entry_type TEXT NOT NULL DEFAULT 'article',
   address TEXT,
   annote TEXT,
   author TEXT,
