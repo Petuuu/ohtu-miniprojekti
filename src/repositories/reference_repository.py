@@ -1,3 +1,5 @@
+"""Stores references in memory."""
+
 from models.reference import Reference
 
 

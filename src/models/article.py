@@ -1,4 +1,7 @@
+"""Defines the article reference model."""
+
 from dataclasses import dataclass, field
+
 from models.reference import Reference
 
 
@@ -55,7 +58,6 @@ class Article(Reference):
         return iter(self._list)
 
     def __getitem__(self, index):
-        if index >= 0 and index < len(self._list):
+        if 0 <= index < len(self._list):
             return self._list[index]
-        else:
-            raise IndexError
+        raise IndexError
