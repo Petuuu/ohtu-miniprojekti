@@ -3,7 +3,7 @@
 {% block title %} Reference Manager {% endblock %}
 {% block body %}
 
-<form action="{{reference.key}}/edit" method="post">
+<form action="{{ url_for('edit_reference', key=reference.key) }}" method="post">
     <label for="key">Key*</label>
     <input type="text" id="key" name="key" value="{{ reference.key or '' }}" required>
     <br />
