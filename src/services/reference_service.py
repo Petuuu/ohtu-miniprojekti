@@ -8,16 +8,16 @@ class ReferenceService:
     def __init__(self, repository: ReferenceRepository):
         self._repository = repository
 
-    def create_reference(self, *args):
-        self.validate(*args)
-        self._repository.create_reference(Reference(*args))
+    def create_reference(self, args):
+        self.validate(args)
+        self._repository.create_reference(Reference(**args))
 
     def get_references(self):
         return self._repository.get_references()
 
-    def validate(self, *args):
-        for arg in args:
-            if len(arg) >= 150:
+    def validate(self, args):
+        for _, value in args.items():
+            if value and len(value) >= 150:
                 raise ValueError
 
 

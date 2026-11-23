@@ -1,16 +1,15 @@
 """Defines the Flask routes for the application."""
 
 import os
-
 from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, request, flash
-
 from services.reference_service import reference_service
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+
 
 @app.route("/")
 def index():
@@ -20,40 +19,46 @@ def index():
 
 @app.route("/add_article", methods=["POST"])
 def add_reference():
-    key = request.form.get("key")
-    author = request.form.get("author")
-    title = request.form.get("title")
-    journal = request.form.get("journal")
-    year = request.form.get("year")
+    keys = [
+        "key",
+        "entry_type",
+        "address",
+        "annote",
+        "author",
+        "booktitle",
+        "chapter",
+        "crossref",
+        "doi",
+        "edition",
+        "editor",
+        "email",
+        "eprint",
+        "howpublished",
+        "institution",
+        "isbn",
+        "issn",
+        "journal",
+        "month",
+        "note",
+        "number",
+        "organization",
+        "pages",
+        "publisher",
+        "school",
+        "series",
+        "title",
+        "type",
+        "url",
+        "volume",
+        "year",
+        "zblnumber",
+    ]
+    args = {}
+    for key in keys:
+        args[key] = request.form.get(key)
 
-    volume = request.form.get("volume")
-    number = request.form.get("number")
-    pages = request.form.get("pages")
-
-    month = request.form.get("month")
-    note = request.form.get("note")
-
-    doi = request.form.get("doi")
-    issn = request.form.get("issn")
-    zblnumber = request.form.get("zblnumber")
-    eprint = request.form.get("eprint")
     try:
-        reference_service.create_reference(
-            key,
-            author,
-            title,
-            journal,
-            year,
-            volume,
-            number,
-            pages,
-            month,
-            note,
-            doi,
-            issn,
-            zblnumber,
-            eprint,
-        )
+        reference_service.create_reference(args)
     except ValueError:
         flash("Input was too long")
 

@@ -42,6 +42,8 @@ class Reference:
 
     def __post_init__(self):
         self._dict = {
+            "key": self.key,
+            "entry_type": self.entry_type,
             "address": self.address,
             "annote": self.annote,
             "author": self.author,
@@ -53,13 +55,11 @@ class Reference:
             "editor": self.editor,
             "email": self.email,
             "eprint": self.eprint,
-            "entry_type": self.entry_type,
             "howpublished": self.howpublished,
             "institution": self.institution,
             "isbn": self.isbn,
             "issn": self.issn,
             "journal": self.journal,
-            "key": self.key,
             "month": self.month,
             "note": self.note,
             "number": self.number,
