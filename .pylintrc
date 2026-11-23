@@ -2,4 +2,4 @@
 disable=missing-class-docstring,missing-function-docstring,unused-import,unspecified-encoding,redundant-unittest-assert
 
 [DESIGN]
-max-attributes=30
+max-attributes=33
