@@ -116,12 +116,12 @@ def edit_reference(key):
             "zblnumber",
         ]
         args = {}
-        for key in keys:
-            args[key] = request.form.get(key)
+        for _key in keys:
+            args[_key] = request.form.get(_key)
 
         try:
             reference_service.create_reference(args)
         except ValueError:
             flash("Input was too long")
-    
+
     return redirect("/")
