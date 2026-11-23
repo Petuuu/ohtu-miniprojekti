@@ -4,13 +4,14 @@ import os
 
 from sqlalchemy import text
 
-from config import db, app
+from config import app, db
+
 
 def reset_db():
-    print("Clearing contents from table todos")
-    sql = text("DELETE FROM todos")
-    db.session.execute(sql)
-    db.session.commit()
+  print("Clearing contents from table ReferencesTable")
+  sql = text("DELETE FROM ReferencesTable")
+  db.session.execute(sql)
+  db.session.commit()
 
 def tables():
     """Returns all table names from the database"""

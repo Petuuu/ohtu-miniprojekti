@@ -1,6 +1,5 @@
 CREATE TABLE ReferencesTable (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  key TEXT NOT NULL UNIQUE,
+  key TEXT PRIMARY KEY NOT NULL UNIQUE,
   entry_type TEXT NOT NULL,
   address TEXT,
   annote TEXT,

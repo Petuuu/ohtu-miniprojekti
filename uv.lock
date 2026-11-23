@@ -436,6 +436,7 @@ dependencies = [
     { name = "getenv" },
     { name = "python-dotenv" },
     { name = "requests" },
+    { name = "sqlalchemy" },
 ]
 
 [package.dev-dependencies]
@@ -454,6 +455,7 @@ requires-dist = [
     { name = "getenv", specifier = ">=0.2.0,<0.3.0" },
     { name = "python-dotenv", specifier = ">=1.2.1,<2.0.0" },
     { name = "requests", specifier = ">=2.32.5,<3.0.0" },
+    { name = "sqlalchemy", specifier = ">=2.1.8" },
 ]
 
 [package.metadata.requires-dev]
