@@ -1,26 +1,48 @@
-"""Stores references in memory."""
+"""Stores references in database."""
 
+from sqlalchemy import Table, delete, insert, select
+
+from config import db
 from models.reference import Reference
 
 
 class ReferenceRepository:
-    def __init__(self):
-        self._list = []
+    def __init__(self, session=None):
+        self.session = session or db.session
+        self.table = Table("ReferencesTable", db.metadata, autoload_with=db.engine)
 
-    def create_reference(self, reference: Reference):
-        self._list.append(reference)
+    def create_reference(self, reference: Reference) -> None:
+        """Saves a reference using insert().values(...)."""
+        values = {
+            col.name: getattr(reference, col.name)
+            for col in self.table.columns
+            if hasattr(reference, col.name)
+        }
 
-    def get_references(self):
-        return self._list
+        stmt = insert(self.table).values(values)
+        self.session.execute(stmt)
+        self.session.commit()
 
-    def find_by_key(self, key):
-        for ref in self._list:
-            if ref.key == key:
-                return ref
-        return None
+    def get_references(self) -> list[Reference]:
+        """Retrieves all references using select()."""
+        stmt = select(self.table)
+        rows = self.session.execute(stmt).all()
 
-    def remove_reference(self, key: str):
+        return [Reference(**row._asdict()) for row in rows]
+
+    def find_by_key(self, key: str) -> Reference | None:
+        """Retrieves a single reference using select().where()."""
+        stmt = select(self.table).where(self.table.c.key == key)
+        row = self.session.execute(stmt).first()
+
+        return Reference(**row._asdict()) if row else None
+
+    def remove_reference(self, key: str) -> None:
+        """Deletes a reference using delete().where()."""
         reference = self.find_by_key(key)
         if reference is None:
             raise KeyError(f"Reference with key '{key}' cannot be found")
-        self._list.remove(reference)
+
+        stmt = delete(self.table).where(self.table.c.key == key)
+        self.session.execute(stmt)
+        self.session.commit()
