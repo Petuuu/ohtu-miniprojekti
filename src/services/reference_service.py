@@ -1,4 +1,4 @@
-from models.article import Article
+from models.reference import Reference
 from repositories.reference_repository import ReferenceRepository
 
 
@@ -8,7 +8,7 @@ class ReferenceService:
 
     def create_reference(self, *args):
         self.validate(*args)
-        self._repository.create_reference(Article(*args))
+        self._repository.create_reference(Reference(*args))
 
     def get_references(self):
         return self._repository.get_references()
