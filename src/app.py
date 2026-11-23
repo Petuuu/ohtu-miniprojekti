@@ -10,11 +10,11 @@ app.secret_key = os.getenv("SECRET_KEY")
 
 @app.route("/")
 def index():
-    articles = reference_service.get_references()
-    return render_template("index.html", references=articles)
+    references = reference_service.get_references()
+    return render_template("index.html", references=references)
 
 
-@app.route("/add_article", methods=["POST"])
+@app.route("/add_reference", methods=["POST"])
 def add_reference():
     key = request.form.get("key")
     author = request.form.get("author")
