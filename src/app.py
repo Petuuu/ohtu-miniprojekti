@@ -13,11 +13,11 @@ app.secret_key = os.getenv("SECRET_KEY")
 
 @app.route("/")
 def index():
-    articles = reference_service.get_references()
-    return render_template("index.html", references=articles)
+    references = reference_service.get_references()
+    return render_template("index.html", references=references)
 
 
-@app.route("/add_article", methods=["POST"])
+@app.route("/add_reference", methods=["POST"])
 def add_reference():
     keys = [
         "key",
@@ -62,4 +62,13 @@ def add_reference():
     except ValueError:
         flash("Input was too long")
 
+    return redirect("/")
+
+
+@app.route("/<key>/delete", methods=["POST"])
+def remove_reference(key):
+    try:
+        reference_service.remove_reference(key)
+    except KeyError:
+        flash(f"No reference with key '{key}'")
     return redirect("/")

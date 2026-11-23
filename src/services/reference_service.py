@@ -15,6 +15,9 @@ class ReferenceService:
     def get_references(self):
         return self._repository.get_references()
 
+    def remove_reference(self, key):
+        self._repository.remove_reference(key)
+
     def validate(self, args):
         for _, value in args.items():
             if value and len(value) >= 150:
