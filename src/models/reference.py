@@ -1,3 +1,5 @@
+"""Defines the base reference model."""
+
 from dataclasses import dataclass
 
 @dataclass

@@ -1,3 +1,5 @@
+"""Provides operations for reference management."""
+
 from models.article import Article
 from repositories.reference_repository import ReferenceRepository
 
