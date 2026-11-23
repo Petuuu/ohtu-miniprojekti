@@ -54,3 +54,11 @@ def add_reference():
         flash("Input was too long")
 
     return redirect("/")
+
+@app.route("/<key>/delete", methods=["POST"])
+def remove_reference(key):
+    try:
+        reference_service.remove_reference(key)
+    except KeyError:
+        flash(f"No reference with key '{key}'")
+    return redirect("/")
