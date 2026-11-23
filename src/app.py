@@ -26,7 +26,7 @@ def add_reference():
     number = request.form.get("number")
     pages = request.form.get("pages")
 
-    month = request.form.get("month")   
+    month = request.form.get("month")
     note = request.form.get("note")
 
     doi = request.form.get("doi")
@@ -52,5 +52,5 @@ def add_reference():
         )
     except ValueError:
         flash("Input was too long")
-        
+
     return redirect("/")
