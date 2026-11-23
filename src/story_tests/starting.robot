@@ -6,7 +6,7 @@ Suite Teardown   Close Browser
 *** Test Cases ***
 After starting main page loads normally
     Go To  ${HOME_URL}
-    Get Title  ==  Miniprojekti
+    Get Title  ==  Reference Manager
 
 After adding a reference it shows on the main page
     Go To  ${HOME_URL}

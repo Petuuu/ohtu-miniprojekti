@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %} Miniprojekti {% endblock %}
+{% block title %} Reference Manager {% endblock %}
 {% block body %}
 
 {% with messages = get_flashed_messages() %}
@@ -11,7 +11,7 @@
     {% endif %}
 {% endwith %}
 
-<h2>Viiteet:</h2>
+<h2>References:</h2>
 <ul>
 
     {% for reference in references %}
@@ -29,46 +29,46 @@
     {% endfor%}
 </ul>
 
-<h2>Lisää artikkeli</h2>
+<h2>Add an article</h2>
 
 <form action="/add_article" method="post">
-    <label for="key">Avain*</label>
+    <label for="key">Key*</label>
     <input type="text" id="key" name="key" required>
     <br />
 
-    <label for="author">Tekijä*</label>
+    <label for="author">Author*</label>
     <input type="text" id="author" name="author" required>
     <br />
 
-    <label for="title">Teos*</label>
+    <label for="title">Title*</label>
     <input type="text" id="title" name="title" required>
     <br />
 
-    <label for="journal">Julkaisussa*</label>
+    <label for="journal">Journal*</label>
     <input type="text" id="journal" name="journal" required>
     <br />
 
-    <label for="year">Vuosi*</label>
+    <label for="year">Year*</label>
     <input type="text" id="year" name="year" required>
     <br />
 
-    <label for="volume">Vuosikerta</label>
+    <label for="volume">Volume</label>
     <input type="text" id="volume" name="volume">
     <br />
 
-    <label for="number">Nro.</label>
+    <label for="number">Number.</label>
     <input type="text" id="number" name="number">
     <br />
 
-    <label for="pages">Sivut</label>
+    <label for="pages">Pages</label>
     <input type="text" id="pages" name="pages">
     <br />
 
-    <label for="month">Kuukausi</label>
+    <label for="month">Month</label>
     <input type="text" id="month" name="month">
     <br />
 
-    <label for="note">Lisätietoja</label>
+    <label for="note">Note</label>
     <textarea id="note" name="note"
         rows="5" cols="33"></textarea>
     <br />
@@ -81,11 +81,11 @@
     <input type="text" id="issn" name="issn">
     <br />
 
-    <label for="zblnumber">ZBL&ndash;numero</label>
+    <label for="zblnumber">ZBL&ndash;number</label>
     <input type="text" id="zblnumber" name="zblnumber">
     <br />
 
-    <label for="eprint">E-print&ndash;tiedot</label>
+    <label for="eprint">E-print&ndash;information</label>
     <input type="text" id="eprint" name="eprint">
     <br />
 
