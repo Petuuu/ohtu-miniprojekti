@@ -36,7 +36,7 @@ class Reference:
     title: str | None = None
     type: str | None = None
     url: str | None = None
-    volume: int | None = None
+    volume: str | None = None
     year: int | None = None
     zblnumber: str | None = None
 
@@ -56,6 +56,7 @@ class Reference:
             "entry_type": self.entry_type,
             "howpublished": self.howpublished,
             "institution": self.institution,
+            "isbn": self.isbn,
             "issn": self.issn,
             "journal": self.journal,
             "key": self.key,
@@ -69,16 +70,14 @@ class Reference:
             "series": self.series,
             "title": self.title,
             "type": self.type,
+            "url": self.url,
             "volume": self.volume,
             "year": self.year,
             "zblnumber": self.zblnumber,
         }
 
     def __iter__(self):
-        return iter(self._list)
+        return iter(self._dict)
 
-    def __getitem__(self, index):
-        if index >= 0 and index < len(self._list):
-            return self._list[index]
-        else:
-            raise IndexError
+    def __getitem__(self, key):
+        return self._dict[key]
