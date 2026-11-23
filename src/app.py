@@ -73,3 +73,10 @@ def remove_reference(key):
     except KeyError:
         flash(f"No reference with key '{key}'")
     return redirect("/")
+
+@app.route("/<key>/edit", methods=["POST", "GET"])
+def edit_reference(key):
+    if request.method == "GET":
+        reference = reference_service.find_by_key(key)
+        return render_template("edit.html", reference=reference)
+    return redirect("/")
