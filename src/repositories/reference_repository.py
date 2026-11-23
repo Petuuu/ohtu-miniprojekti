@@ -7,9 +7,15 @@ from models.reference import Reference
 
 
 class ReferenceRepository:
-    def __init__(self, session=None):
+    def __init__(self, session=None, table=None):
         self.session = session or db.session
-        self.table = Table("ReferencesTable", db.metadata, autoload_with=db.engine)
+        self._table = table
+
+    @property
+    def table(self):
+        if self._table is None:
+            self._table = Table("ReferencesTable", db.metadata, autoload_with=db.engine)
+        return self._table
 
     def create_reference(self, reference: Reference) -> None:
         """Saves a reference using insert().values(...)."""

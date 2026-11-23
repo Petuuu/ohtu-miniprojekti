@@ -1,14 +1,9 @@
 """Defines the Flask routes for the application."""
 
-import os
-from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, request, flash
+from flask import flash, redirect, render_template, request
+
+from config import app
 from services.reference_service import reference_service
-
-load_dotenv()
-
-app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")
 
 
 @app.route("/")
