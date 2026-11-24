@@ -84,13 +84,12 @@ def edit_reference(key):
         if args["key"] != key and reference_service.find_by_key(args["key"]):
             flash("key was already taken")
             return redirect(f"/{key}/edit")
-        else:
-            try:
-                reference_service.validate(args)
-                reference_service.remove_reference(key)
-                reference_service.create_reference(args)
-            except ValueError:
-                flash("Input was too long")
+        try:
+            reference_service.validate(args)
+            reference_service.remove_reference(key)
+            reference_service.create_reference(args)
+        except ValueError:
+            flash("Input was too long")
 
     return redirect("/")
 
