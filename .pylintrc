@@ -1,0 +1,5 @@
+[MESSAGES CONTROL]
+disable=missing-class-docstring,missing-function-docstring,unused-import,unspecified-encoding,redundant-unittest-assert
+
+[DESIGN]
+max-attributes=33

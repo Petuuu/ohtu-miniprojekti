@@ -1,3 +1,5 @@
+"""Contains basic application tests."""
+
 import unittest
 
 class Empty(unittest.TestCase):
