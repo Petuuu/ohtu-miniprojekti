@@ -12,6 +12,25 @@
 {% endwith %}
 
 <form action="{{ url_for('edit_reference', key=reference.key) }}" method="post">
+    <label for="entry_type">Type*</label>
+    <select id="entry_type" name="entry_type" required>
+        <option value="article" {% if reference.entry_type == "article" %}selected{% endif %}>Article</option>
+        <option value="book" {% if reference.entry_type == "book" %}selected{% endif %}>Book</option>
+        <option value="booklet" {% if reference.entry_type == "booklet" %}selected{% endif %}>Booklet</option>
+        <option value="conference" {% if reference.entry_type == "conference" %}selected{% endif %}>Conference</option>
+        <option value="inbook" {% if reference.entry_type == "inbook" %}selected{% endif %}>Inbook</option>
+        <option value="incollection" {% if reference.entry_type == "incollection" %}selected{% endif %}>Incollection</option>
+        <option value="inproceedings" {% if reference.entry_type == "inproceedings" %}selected{% endif %}>Inproceedings</option>
+        <option value="manual" {% if reference.entry_type == "manual" %}selected{% endif %}>Manual</option>
+        <option value="mastersthesis" {% if reference.entry_type == "mastersthesis" %}selected{% endif %}>Mastersthesis</option>
+        <option value="misc" {% if reference.entry_type == "misc" %}selected{% endif %}>Misc</option>
+        <option value="phdthesis" {% if reference.entry_type == "phdthesis" %}selected{% endif %}>Phdthesis</option>
+        <option value="proceedings" {% if reference.entry_type == "proceedings" %}selected{% endif %}>Proceedings</option>
+        <option value="techreport" {% if reference.entry_type == "techreport" %}selected{% endif %}>Techreport</option>
+        <option value="unpublished" {% if reference.entry_type == "unpublished" %}selected{% endif %}>Unpublished</option>
+    </select>
+    <br />
+
     <label for="key">Key*</label>
     <input type="text" id="key" name="key" value="{{ reference.key or '' }}" required>
     <br />
