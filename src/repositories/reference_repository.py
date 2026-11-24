@@ -14,7 +14,12 @@ class ReferenceRepository:
     @property
     def table(self):
         if self._table is None:
-            self._table = Table("ReferencesTable", db.metadata, autoload_with=db.engine)
+            self._table = Table(
+                "ReferencesTable",
+                db.metadata,
+                autoload_with=db.engine,
+                extend_existing=True,
+            )
         return self._table
 
     def create_reference(self, reference: Reference) -> None:
