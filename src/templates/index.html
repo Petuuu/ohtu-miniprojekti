@@ -29,10 +29,10 @@
         <form action="{{ url_for('remove_reference', key=reference.key) }}"
                 onsubmit='return confirm("Are you sure you want to delete " + {{ reference.title|tojson }} + "?")'
                 method="post">
-            <button type="submit">Delete</button>
+            <button type="submit" data-testid="delete-{{ reference.key }}">Delete</button>
         </form>
-        <form action="{{ url_for('edit_reference', key=reference.key) }}", method="GET">
-            <button type="submit">Edit</button>
+        <form action="{{ url_for('edit_reference', key=reference.key) }}" method="GET">
+            <button type="submit" data-testid="edit-{{ reference.key }}">Edit</button>
         </form>
         <hr>
 

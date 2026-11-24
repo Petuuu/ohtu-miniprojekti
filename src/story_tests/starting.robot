@@ -22,7 +22,7 @@ After adding a reference it shows on the main page
 After deleting a reference it disappears from the main page
     Add Reference  key=delete_this  title=Delete Me
     Handle Future Dialogs  action=accept
-    Click  css=h3:has-text("Delete Me") ~ form button
+    Click  css=[data-testid="delete-delete_this"]
     ${body}=  Get Text  body
     Should Not Contain  ${body}  Delete Me
 
