@@ -113,14 +113,22 @@ def edit_reference(key):
             "zblnumber",
         ]
         args = {}
+
         for _key in keys:
             args[_key] = request.form.get(_key)
-        try:
-            reference_service.validate(args)
-            reference_service.remove_reference(key)
-            reference_service.create_reference(args)
-        except ValueError:
-            flash("Input was too long")
+        print(key, args["key"])
+        print(reference_service.find_by_key(args["key"]))
+        if args["key"] != key and reference_service.find_by_key(args["key"]):
+            print("what")
+            flash("key was already taken")
+            return redirect(f"/{key}/edit")
+        else:
+            try:
+                reference_service.validate(args)
+                reference_service.remove_reference(key)
+                reference_service.create_reference(args)
+            except ValueError:
+                flash("Input was too long")
 
     return redirect("/")
 
