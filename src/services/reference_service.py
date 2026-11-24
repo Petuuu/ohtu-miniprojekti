@@ -20,8 +20,11 @@ class ReferenceService:
 
     def validate(self, args):
         for key, value in args.items():
-            if value and len(value) >= 150:
-                raise ValueError(f"{key} is too long (max 150)")
+            if value:
+                if key == "year" and int(value) > 2026 or int(value) < 0:
+                    raise ValueError("year must not be negative or in the future")
+                elif len(value) > 1000:
+                    raise ValueError(f"{key} is too long (max 1000)")
 
 
 reference_service = ReferenceService(ReferenceRepository())
