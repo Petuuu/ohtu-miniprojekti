@@ -1,5 +1,6 @@
 """Provides operations for reference management."""
 
+from datetime import datetime
 from models.reference import Reference
 from repositories.reference_repository import ReferenceRepository
 
@@ -21,9 +22,16 @@ class ReferenceService:
     def validate(self, args):
         for key, value in args.items():
             if value:
-                if key == "year" and int(value) > 2026 or int(value) < 0:
-                    raise ValueError("year must not be negative or in the future")
-                elif len(value) > 1000:
+                if key == "year":
+                    try:
+                        year = int(value)
+                    except Exception as exc:
+                        raise ValueError("year must be integer") from exc
+
+                    if year > datetime.now().year or int(value) < 0:
+                        raise ValueError("year must not be negative or in the future")
+
+                if len(value) > 1000:
                     raise ValueError(f"{key} is too long (max 1000)")
 
 
