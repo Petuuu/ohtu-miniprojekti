@@ -31,17 +31,34 @@
                 method="post">
             <button type="submit">Delete</button>
         </form>
+        <form action="{{ url_for('edit_reference', key=reference.key) }}", method="GET">
+            <button type="submit">Edit</button>
+        </form>
         <hr>
 
     {% endfor%}
 </ul>
 
-<h2>Add an article</h2>
+<h2>Add a reference</h2>
 
 <form action="/add_reference" method="post">
     <label for="entry_type">Type*</label>
-    <input type="text" id="entry_type" name="entry_type"
-        value="{{ form_values.get('entry_type', 'article') }}" required>
+    <select id="entry_type" name="entry_type" required>
+        <option value="article" selected>Article</option>
+        <option value="book">Book</option>
+        <option value="booklet">Booklet</option>
+        <option value="conference">Conference</option>
+        <option value="inbook">Inbook</option>
+        <option value="incollection">Incollection</option>
+        <option value="inproceedings">Inproceedings</option>
+        <option value="manual">Manual</option>
+        <option value="mastersthesis">Mastersthesis</option>
+        <option value="misc">Misc</option>
+        <option value="phdthesis">Phdthesis</option>
+        <option value="proceedings">Proceedings</option>
+        <option value="techreport">Techreport</option>
+        <option value="unpublished">Unpublished</option>
+    </select>
     <br />
 
     <label for="key">Key*</label>

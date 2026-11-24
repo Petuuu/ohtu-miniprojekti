@@ -19,6 +19,9 @@ class ReferenceService:
     def remove_reference(self, key):
         self._repository.remove_reference(key)
 
+    def find_by_key(self, key):
+        return self._repository.find_by_key(key)
+
     def validate(self, args):
         for key, value in args.items():
             if value:
