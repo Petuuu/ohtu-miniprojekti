@@ -54,7 +54,10 @@ def add_reference():
         args[key] = request.form.get(key)
     if not args.get("entry_type"):
         args["entry_type"] = "article"
-
+    if reference_service.find_by_key(args["key"]):
+        flash("key was already taken")
+        references = reference_service.get_references()
+        return render_template("index.html", references=references, form_values=args)
     try:
         reference_service.create_reference(args)
     except ValueError as e:
