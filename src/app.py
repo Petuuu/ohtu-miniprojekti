@@ -56,12 +56,10 @@ def add_reference():
 
     try:
         reference_service.create_reference(args)
-    except ValueError:
-        flash("Input was too long")
+    except ValueError as e:
+        flash(e)
         references = reference_service.get_references()
-        return render_template(
-            "index.html", references=references, form_values=args
-        )
+        return render_template("index.html", references=references, form_values=args)
 
     return redirect("/")
 

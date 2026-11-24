@@ -19,9 +19,9 @@ class ReferenceService:
         self._repository.remove_reference(key)
 
     def validate(self, args):
-        for _, value in args.items():
+        for key, value in args.items():
             if value and len(value) >= 150:
-                raise ValueError
+                raise ValueError(f"{key} is too long (max 150)")
 
 
 reference_service = ReferenceService(ReferenceRepository())
