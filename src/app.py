@@ -52,8 +52,6 @@ def add_reference():
     args = {}
     for key in keys:
         args[key] = request.form.get(key)
-    if not args.get("entry_type"):
-        args["entry_type"] = "article"
     if reference_service.find_by_key(args["key"]):
         flash("key was already taken")
         references = reference_service.get_references()
@@ -93,8 +91,10 @@ def edit_reference(key):
             reference_service.validate(args)
             reference_service.remove_reference(key)
             reference_service.create_reference(args)
-        except ValueError:
-            flash("Input was too long")
+        except ValueError as e:
+            flash(str(e))
+            return redirect(f"/{key}/edit")
+
 
     return redirect("/")
 
