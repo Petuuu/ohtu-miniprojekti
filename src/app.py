@@ -80,7 +80,6 @@ def edit_reference(key):
         reference = reference_service.find_by_key(key)
         return render_template("edit.html", reference=reference)
     if request.method == "POST":
-        reference_service.remove_reference(key)
         keys = [
             "key",
             "entry_type",
@@ -118,8 +117,9 @@ def edit_reference(key):
         args = {}
         for _key in keys:
             args[_key] = request.form.get(_key)
-
         try:
+            reference_service.validate(args)
+            reference_service.remove_reference(key)
             reference_service.create_reference(args)
         except ValueError:
             flash("Input was too long")
