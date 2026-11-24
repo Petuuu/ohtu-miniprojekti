@@ -22,9 +22,9 @@
                 {{attribute}}: {{value}}
             </li>
             {% endif %}
-  
+
         {% endfor %}
-        
+
         <br />
         <form action="{{ url_for('remove_reference', key=reference.key) }}"
                 onsubmit='return confirm("Are you sure you want to delete " + {{ reference.title|tojson }} + "?")'
@@ -62,60 +62,60 @@
     <br />
 
     <label for="key">Key*</label>
-    <input type="text" id="key" name="key" required>
+    <input type="text" id="key" name="key" value="{{ form_values.get('key', '') or '' }}" required>
     <br />
 
     <label for="author">Author*</label>
-    <input type="text" id="author" name="author" required>
+    <input type="text" id="author" name="author" value="{{ form_values.get('author', '') }}" required>
     <br />
 
     <label for="title">Title*</label>
-    <input type="text" id="title" name="title" required>
+    <input type="text" id="title" name="title" value="{{ form_values.get('title', '') }}" required>
     <br />
 
     <label for="journal">Journal*</label>
-    <input type="text" id="journal" name="journal" required>
+    <input type="text" id="journal" name="journal" value="{{ form_values.get('journal', '') }}" required>
     <br />
 
     <label for="year">Year*</label>
-    <input type="text" id="year" name="year" required>
+    <input type="text" id="year" name="year" value="{{ form_values.get('year', '') }}" required>
     <br />
 
     <label for="volume">Volume</label>
-    <input type="text" id="volume" name="volume">
+    <input type="text" id="volume" name="volume" value="{{ form_values.get('volume', '') }}">
     <br />
 
     <label for="number">Number.</label>
-    <input type="text" id="number" name="number">
+    <input type="text" id="number" name="number" value="{{ form_values.get('number', '') }}">
     <br />
 
     <label for="pages">Pages</label>
-    <input type="text" id="pages" name="pages">
+    <input type="text" id="pages" name="pages" value="{{ form_values.get('pages', '') }}">
     <br />
 
     <label for="month">Month</label>
-    <input type="text" id="month" name="month">
+    <input type="text" id="month" name="month" value="{{ form_values.get('month', '') }}">
     <br />
 
     <label for="note">Note</label>
     <textarea id="note" name="note"
-        rows="5" cols="33"></textarea>
+        rows="5" cols="33">{{ form_values.get('note', '') }}</textarea>
     <br />
 
     <label for="doi">DOI</label>
-    <input type="text" id="doi" name="doi">
+    <input type="text" id="doi" name="doi" value="{{ form_values.get('doi', '') }}">
     <br />
 
     <label for="issn">ISSN</label>
-    <input type="text" id="issn" name="issn">
+    <input type="text" id="issn" name="issn" value="{{ form_values.get('issn', '') }}">
     <br />
 
     <label for="zblnumber">ZBL&ndash;number</label>
-    <input type="text" id="zblnumber" name="zblnumber">
+    <input type="text" id="zblnumber" name="zblnumber" value="{{ form_values.get('zblnumber', '') }}">
     <br />
 
     <label for="eprint">E-print&ndash;information</label>
-    <input type="text" id="eprint" name="eprint">
+    <input type="text" id="eprint" name="eprint" value="{{ form_values.get('eprint', '') }}">
     <br />
 
     <input type="submit" id="submit" name="submit" value="Add" />

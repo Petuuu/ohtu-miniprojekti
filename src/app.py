@@ -44,7 +44,7 @@ keys = [
 @app.route("/")
 def index():
     references = reference_service.get_references()
-    return render_template("index.html", references=references)
+    return render_template("index.html", references=references, form_values={})
 
 
 @app.route("/add_reference", methods=["POST"])
@@ -59,6 +59,10 @@ def add_reference():
         reference_service.create_reference(args)
     except ValueError:
         flash("Input was too long")
+        references = reference_service.get_references()
+        return render_template(
+            "index.html", references=references, form_values=args
+        )
 
     return redirect("/")
 
