@@ -1,14 +1,9 @@
 """Defines the Flask routes for the application."""
 
-import os
-from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, request, flash
+from flask import flash, redirect, render_template, request
+
+from config import app
 from services.reference_service import reference_service
-
-load_dotenv()
-
-app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")
 
 
 @app.route("/")
@@ -56,6 +51,8 @@ def add_reference():
     args = {}
     for key in keys:
         args[key] = request.form.get(key)
+    if not args.get("entry_type"):
+        args["entry_type"] = "article"
 
     try:
         reference_service.create_reference(args)
@@ -72,3 +69,7 @@ def remove_reference(key):
     except KeyError:
         flash(f"No reference with key '{key}'")
     return redirect("/")
+
+
+if __name__ == "__main__":
+    app.run(port=5001, host="0.0.0.0", debug=True)

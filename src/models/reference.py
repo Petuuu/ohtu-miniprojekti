@@ -8,7 +8,7 @@ class Reference:
     """Data Class for an Reference."""
 
     key: str
-    entry_type: str
+    entry_type: str = "article"
     address: str | None = None
     annote: str | None = None
     author: str | None = None
@@ -41,6 +41,8 @@ class Reference:
     zblnumber: str | None = None
 
     def __post_init__(self):
+        if not self.entry_type:
+            self.entry_type = "article"
         self._dict = {
             "key": self.key,
             "entry_type": self.entry_type,

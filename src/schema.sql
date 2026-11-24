@@ -1,3 +1,34 @@
-CREATE TABLE articles (
-  id INTEGER PRIMARY KEY AUTOINCREMENT
-)
+CREATE TABLE ReferencesTable (
+  key TEXT PRIMARY KEY NOT NULL UNIQUE,
+  entry_type TEXT NOT NULL DEFAULT 'article',
+  address TEXT,
+  annote TEXT,
+  author TEXT,
+  booktitle TEXT,
+  chapter TEXT,
+  crossref TEXT,
+  doi TEXT,
+  edition TEXT,
+  editor TEXT,
+  email TEXT,
+  eprint TEXT,
+  howpublished TEXT,
+  institution TEXT,
+  isbn TEXT,
+  issn TEXT,
+  journal TEXT,
+  month TEXT,
+  note TEXT,
+  number TEXT,
+  organization TEXT,
+  pages TEXT,
+  publisher TEXT,
+  school TEXT,
+  series TEXT,
+  title TEXT,
+  type TEXT,
+  url TEXT,
+  volume TEXT,
+  year INTEGER,
+  zblnumber TEXT
+);
