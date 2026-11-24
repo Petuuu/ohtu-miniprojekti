@@ -6,6 +6,7 @@ from config import app
 from services.reference_service import reference_service
 
 
+
 @app.route("/")
 def index():
     references = reference_service.get_references()
@@ -70,6 +71,58 @@ def remove_reference(key):
         flash(f"No reference with key '{key}'")
     return redirect("/")
 
+
+@app.route("/<key>/edit", methods=["POST", "GET"])
+def edit_reference(key):
+    if request.method == "GET":
+        reference = reference_service.find_by_key(key)
+        return render_template("edit.html", reference=reference)
+    if request.method == "POST":
+        keys = [
+            "key",
+            "entry_type",
+            "address",
+            "annote",
+            "author",
+            "booktitle",
+            "chapter",
+            "crossref",
+            "doi",
+            "edition",
+            "editor",
+            "email",
+            "eprint",
+            "howpublished",
+            "institution",
+            "isbn",
+            "issn",
+            "journal",
+            "month",
+            "note",
+            "number",
+            "organization",
+            "pages",
+            "publisher",
+            "school",
+            "series",
+            "title",
+            "type",
+            "url",
+            "volume",
+            "year",
+            "zblnumber",
+        ]
+        args = {}
+        for _key in keys:
+            args[_key] = request.form.get(_key)
+        try:
+            reference_service.validate(args)
+            reference_service.remove_reference(key)
+            reference_service.create_reference(args)
+        except ValueError:
+            flash("Input was too long")
+
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(port=5001, host="0.0.0.0", debug=True)
